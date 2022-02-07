@@ -1,0 +1,75 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+
+#modal{
+    display: block;
+    font-family: fantasy;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#modal button{
+    padding: 10px;
+    outline: auto;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#bot, #OnevsOne{
+    display: flex;
+    flex-direction: row;
+}
+
+
+#GamePlayer,#Game{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.buttons, .buttonBot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 75px;
+    border: 2px dashed red;
+    margin: 5px;
+    text-align: center;
+    font-size: 29px;
+}
+
+#Winner,#Text{
+    display: none;
+    width: 290px;
+    height: 300px;
+    position: absolute;
+    left: 41.7%;
+    background-color: orange;
+    opacity: .9;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 300px;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: fantasy;
+}
+
+#reload,#Reload{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 1000;
+    outline: auto;
+    height: 30px;
+    width: 30px;
+    background-color: orange;
+}
