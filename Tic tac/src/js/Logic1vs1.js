@@ -1,6 +1,7 @@
 let main = document.getElementById("GamePlayer");
 let reload = document.getElementById("reload");
 let text = document.getElementById("Winner")
+var change = 0;
 reload.onclick = Reaload;
 
 function Vs() {
@@ -15,6 +16,17 @@ function Vs() {
 
 function Click(e){
     let id = e.target.id;
+    if(Buttons(id).innerText == "") {
+        if(change == 0){
+            Buttons(id).innerText = "X";
+            change = 1;
+        }
+        else if(change == 1){
+            Buttons(id).innerText = "0";
+            change = 0;
+        }
+    }
+    else{alert("Нажмите на другое")}
 }
 
 function Buttons(id) {
@@ -23,26 +35,22 @@ function Buttons(id) {
 
 
 function Check() {
-    let par;
     if(Buttons(1).innerText == "X" && Buttons(2).innerText == "X" && Buttons(3).innerText == "X" ||  Buttons(4).innerText == "X" && Buttons(5).innerText == "X" && Buttons(6).innerText == "X"
     || Buttons(7).innerText == "X" && Buttons(8).innerText == "X" && Buttons(9).innerText == "X" || Buttons(1).innerText == "X" && Buttons(5).innerText == "X" && Buttons(9).innerText == "X"
     || Buttons(3).innerText == "X" && Buttons(5).innerText == "X" && Buttons(7).innerText == "X" || Buttons(1).innerText == "X" && Buttons(4).innerText == "X" && Buttons(7).innerText == "X" 
     || Buttons(2).innerText == "X" && Buttons(5).innerText == "X" && Buttons(8).innerText == "X" || Buttons(3).innerText == "X" && Buttons(6).innerText == "X" && Buttons(9).innerText == "X"){
-        par = 1;
         Ban("X-win")
     }
     else if(Buttons(1).innerText == "0" && Buttons(2).innerText == "0" && Buttons(3).innerText == "0" ||  Buttons(4).innerText == "0" && Buttons(5).innerText == "0" && Buttons(6).innerText == "0"
     || Buttons(7).innerText == "0" && Buttons(8).innerText == "0" && Buttons(9).innerText == "0" || Buttons(1).innerText == "0" && Buttons(5).innerText == "0" && Buttons(9).innerText == "0"
     || Buttons(3).innerText == "0" && Buttons(5).innerText == "0" && Buttons(7).innerText == "0" || Buttons(1).innerText == "0" && Buttons(4).innerText == "0" && Buttons(7).innerText == "0" 
     || Buttons(2).innerText == "0" && Buttons(5).innerText == "0" && Buttons(8).innerText == "0" || Buttons(3).innerText == "0" && Buttons(6).innerText == "0" && Buttons(9).innerText == "0"){
-        par = 1;
         Ban("Y-win")
     }
-    else{
-        par = 0;
-        if(par == 0){
-            Ban("Draw")
-        }
+    else if((Buttons(1).innerText == "X" || Buttons(1).innerText == "0") && (Buttons(2).innerText == "X" || Buttons(2).innerText == "0") && (Buttons(3).innerText == "X" || Buttons(3).innerText == "0") 
+    && (Buttons(4).innerText == "X" || Buttons(4).innerText == "0") && (Buttons(5).innerText == "X" || Buttons(5).innerText == "0") && (Buttons(6).innerText == "X" || Buttons(6).innerText == "0")
+    && (Buttons(7).innerText == "X" || Buttons(7).innerText == "0") && (Buttons(8).innerText == "X" || Buttons(8).innerText == "0") && (Buttons(9).innerText == "X" || Buttons(9).innerText == "0")){
+        Ban("Draw")
     }
 }
 

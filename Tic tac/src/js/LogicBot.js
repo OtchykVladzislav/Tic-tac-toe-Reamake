@@ -1,13 +1,13 @@
 let mainBot = document.getElementById("Game");
 let refresh = document.getElementById("Reload");
 let title = document.getElementById("Text")
-var buttons = document.querySelectorAll('.buttonBot');
+var buttons = document.getElementsByClassName('buttonBot');
 refresh.onclick = Refresh;
 
 function Bot() {
-    for(i=0; i<9; i++){
+    for(i=0; i < 9; i++){
         let but = document.createElement("div");
-        but.id = i+1;
+        but.id = i;
         but.className = "buttonBot";
         but.onclick = MyClick;
         mainBot.appendChild(but)
@@ -21,18 +21,18 @@ function MyClick(e){
 }
 
 let Bots = () => {
-    let index = []
-    let random = Math.floor(Math.random()*9);
-    for(let i = 0; i<buttons.length; i++){
+    let index = [];
+    let j = 0;
+    for(i = 0; i < buttons.length; i++){
         if(buttons[i].innerText == ""){
-            index.push(i)
+            index[j] = i;
+            j++;
         }
     }
-    for(let j = 0; j < index.length; j++){
-        if(index[j] == random){
-            Button(random).innerText = "0";
-        }
-    }
+    let random = Math.floor(Math.random() * index.length);
+    let randBlock = index[random];
+    buttons[randBlock].innerText = "0";
+
 }
 
 function Button(id) {
@@ -41,17 +41,22 @@ function Button(id) {
 
 
 function CheckWin() {
-    if(Button(1).innerText == "X" && Button(2).innerText == "X" && Button(3).innerText == "X" ||  Button(4).innerText == "X" && Button(5).innerText == "X" && Button(6).innerText == "X"
-    || Button(7).innerText == "X" && Button(8).innerText == "X" && Button(9).innerText == "X" || Button(1).innerText == "X" && Button(5).innerText == "X" && Button(9).innerText == "X"
-    || Button(3).innerText == "X" && Button(5).innerText == "X" && Button(7).innerText == "X" || Button(1).innerText == "X" && Button(4).innerText == "X" && Button(7).innerText == "X" 
-    || Button(2).innerText == "X" && Button(5).innerText == "X" && Button(8).innerText == "X" || Button(3).innerText == "X" && Button(6).innerText == "X" && Button(9).innerText == "X"){
+    if(Button(0).innerText == "X" && Button(1).innerText == "X" && Button(2).innerText == "X" ||  Button(3).innerText == "X" && Button(4).innerText == "X" && Button(5).innerText == "X"
+    || Button(6).innerText == "X" && Button(7).innerText == "X" && Button(8).innerText == "X" || Button(0).innerText == "X" && Button(4).innerText == "X" && Button(8).innerText == "X"
+    || Button(2).innerText == "X" && Button(4).innerText == "X" && Button(6).innerText == "X" || Button(0).innerText == "X" && Button(3).innerText == "X" && Button(6).innerText == "X" 
+    || Button(1).innerText == "X" && Button(4).innerText == "X" && Button(7).innerText == "X" || Button(2).innerText == "X" && Button(5).innerText == "X" && Button(8).innerText == "X"){
         Block("X-win")
     }
-    else if(Button(1).innerText == "0" && Button(2).innerText == "0" && Button(3).innerText == "0" ||  Button(4).innerText == "0" && Button(5).innerText == "0" && Button(6).innerText == "0"
-    || Button(7).innerText == "0" && Button(8).innerText == "0" && Button(9).innerText == "0" || Button(1).innerText == "0" && Button(5).innerText == "0" && Button(9).innerText == "0"
-    || Button(3).innerText == "0" && Button(5).innerText == "0" && Button(7).innerText == "0" || Button(1).innerText == "0" && Button(4).innerText == "0" && Button(7).innerText == "0" 
-    || Button(2).innerText == "0" && Button(5).innerText == "0" && Button(8).innerText == "0" || Button(3).innerText == "0" && Button(6).innerText == "0" && Button(9).innerText == "0"){
+    else if(Button(0).innerText == "0" && Button(1).innerText == "0" && Button(2).innerText == "0" ||  Button(3).innerText == "0" && Button(4).innerText == "0" && Button(5).innerText == "0"
+    || Button(6).innerText == "0" && Button(7).innerText == "0" && Button(8).innerText == "0" || Button(0).innerText == "0" && Button(4).innerText == "0" && Button(8).innerText == "0"
+    || Button(2).innerText == "0" && Button(4).innerText == "0" && Button(6).innerText == "0" || Button(0).innerText == "0" && Button(3).innerText == "0" && Button(6).innerText == "0" 
+    || Button(1).innerText == "0" && Button(4).innerText == "0" && Button(7).innerText == "0" || Button(2).innerText == "0" && Button(5).innerText == "0" && Button(8).innerText == "0"){
         Block("Y-win")
+    }
+    else if((Button(0).innerText == "X" || Button(0).innerText == "0") && (Button(1).innerText == "X" || Button(1).innerText == "0") && (Button(2).innerText == "X" || Button(2).innerText == "0") 
+    && (Button(3).innerText == "X" || Button(3).innerText == "0") && (Button(4).innerText == "X" || Button(4).innerText == "0") && (Button(5).innerText == "X" || Button(5).innerText == "0")
+    && (Button(6).innerText == "X" || Button(6).innerText == "0") && (Button(7).innerText == "X" || Button(7).innerText == "0") && (Button(8).innerText == "X" || Button(8).innerText == "0")){
+        Block("Draw")
     }
 }
 
